@@ -1,127 +1,198 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Saitolesz Project</title>
+  <meta charset="UTF-8">
+  <title>Saitolesz Project</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      margin: 0;
+      padding: 20px;
+      background: #f5f5f5;
+    }
 
-<style>
-body {
-  margin: 0;
-  padding: 16px;
-  font-family: sans-serif;
-  background: #f2f2f2;
-  text-align: center;
-}
+    h1 {
+      text-align: center;
+      margin-bottom: 10px;
+    }
 
-h1 {
-  margin: 16px 0 12px;
-}
+    .description {
+      text-align: center;
+      color: #555;
+      margin-bottom: 30px;
+    }
 
-.main-photo {
-  max-width: 900px;
-  margin: 0 auto 32px;
-}
+    .main-photo {
+      text-align: center;
+      margin-bottom: 40px;
+    }
 
-.main-photo img {
-  width: 100%;
-  border-radius: 14px;
-}
+    .main-photo img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+    }
 
-/* 参加者一覧 */
-.gallery {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-  gap: 12px;
-  padding: 0 8px 24px;
-}
+    h2 {
+      margin-bottom: 20px;
+    }
 
-.gallery img {
-  width: 100%;
-  border-radius: 8px;
-  cursor: pointer;
-}
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+      gap: 15px;
+    }
 
-/* モーダル */
-.modal {
-  display: none;
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.75);
-  justify-content: center;
-  align-items: center;
-}
+    .card {
+      background: white;
+      padding: 10px;
+      border-radius: 8px;
+      text-align: center;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
 
-.modal-content {
-  background: #fff;
-  padding: 16px;
-  max-width: 90%;
-  border-radius: 10px;
-}
+    .card img {
+      width: 100%;
+      height: auto;
+      border-radius: 6px;
+    }
 
-.modal-content img {
-  max-width: 100%;
-}
-
-.close {
-  text-align: right;
-  cursor: pointer;
-  font-size: 14px;
-  color: #666;
-}
-</style>
+    .name {
+      margin-top: 8px;
+      font-size: 14px;
+    }
+  </style>
 </head>
-
 <body>
 
-<!-- メイン -->
-<h1>Saitolesz Project</h1>
-<div class="main-photo">
-  <img src="images/photo0.jpg" alt="Saitolesz Project メイン写真">
-</div>
+  <!-- メイン -->
+  <h1>Saitolesz Project</h1>
+  <p class="description">
+    齊藤家への仲間捜しの旅が今始まる
+  </p>
 
-<!-- 一覧 -->
-<h1>参加者一覧</h1>
-<div class="gallery" id="gallery"></div>
-
-<!-- モーダル -->
-<div class="modal" id="modal" onclick="closeModal()">
-  <div class="modal-content" onclick="event.stopPropagation()">
-    <div class="close" onclick="closeModal()">閉じる</div>
-    <img id="modalImg">
-    <p id="modalText"></p>
+  <div class="main-photo">
+    <img src="photo0.jpg" alt="Saitolesz Project メインビジュアル">
   </div>
-</div>
 
-<script>
-// ===== ここは触らなくてOK =====
-const photos = [];
-for (let i = 1; i <= 28; i++) {
-  photos.push({
-    file: `photo${i}.jpg`,
-    text: `参加者 ${i}`
-  });
-}
+  <!-- 一覧 -->
+  <h2>参加者一覧</h2>
 
-const gallery = document.getElementById("gallery");
+  <div class="gallery">
+    <div class="card">
+      <img src="photo1.jpg" alt="参加者1">
+      <div class="name">★菊池コン風磨★　元テツキーゾーンのメンバー「殻破れよ」　熱い男</div>
+    </div>
+    <div class="card">
+      <img src="photo2.jpg" alt="参加者2">
+      <div class="name">★佐藤レミー勝利★　元テツキーゾーンのメンバー　「ぬるいんだよなー」　料理が好き</div>
+    </div>
+    <div class="card">
+      <img src="photo3.jpg" alt="参加者3">
+      <div class="name">★松島グルミット聡★　元テツキーゾーンのメンバー　「イライラする」　犬が好き</div>
+    </div>
+    <div class="card">
+      <img src="photo4.jpg" alt="参加者4">
+      <div class="name">★マリウストッポ★　元テツキーゾーンのメンバー　眠いので引退</div>
+    </div>
+    <div class="card">
+      <img src="photo5.jpg" alt="参加者5">
+      <div class="name">★モンキチンティ★　元テツキーゾーンのメンバー　現在はソロ活動中</div>
+    </div>
+    <div class="card">
+      <img src="photo6.jpg" alt="参加者6">
+      <div class="name">★すぴぃ★　候補生　いつも寝ている</div>
+    </div>
+    <div class="card">
+      <img src="photo7.jpg" alt="参加者7">
+      <div class="name">★パンちゃん★　候補生　上野動物園から脱走</div>
+    </div>
+    <div class="card">
+      <img src="photo8.jpg" alt="参加者8">
+      <div class="name">★ケロちゃん★　候補生　目が大きいのがチャームポイント</div>
+    </div>
+    <div class="card">
+      <img src="photo9.jpg" alt="参加者9">
+      <div class="name">★篠塚大輝★　候補生　サイプロを地でいってる男　「時間ないで」</div>
+    </div>
+    <div class="card">
+      <img src="photo10.jpg" alt="参加者10">
+      <div class="name">★橋本将生★　候補生　声が小さい　イケメン</div>
+    </div>
+    <div class="card">
+      <img src="photo11.jpg" alt="参加者11">
+      <div class="name">★ポップ★　候補生　舌がペロリ</div>
+    </div>
+    <div class="card">
+      <img src="photo12.jpg" alt="参加者12">
+      <div class="name">★モジャピ★　候補生　宇宙から来たモジャモジャ</div>
+    </div>
+    <div class="card">
+      <img src="photo13.jpg" alt="参加者13">
+      <div class="name">★ホッピー★　候補生　宇宙から来たモジャモジャ　目が怖い</div>
+    </div>
+    <div class="card">
+      <img src="photo14.jpg" alt="参加者14">
+      <div class="name">★ショーン★　候補生　特技ブランケットになれる</div>
+    </div>
+    <div class="card">
+      <img src="photo15.jpg" alt="参加者15">
+      <div class="name">★小トトロ★　候補生　いつかの赤ちゃんに手を引きちぎられた</div>
+    </div>
+    <div class="card">
+      <img src="photo16.jpg" alt="参加者16">
+      <div class="name">★キウイブラザーズ★　候補生　ポジション　見てると元気になる</div>
+    </div>
+    <div class="card">
+      <img src="photo17.jpg" alt="参加者17">
+      <div class="name">★ウォレス★　候補生　グルミットがメンバーなので仕方なく参加</div>
+    </div>
+    <div class="card">
+      <img src="photo18.jpg" alt="参加者18">
+      <div class="name">★レックス★　候補生　おもちゃ　肩に乗りたいけど落ちる</div>
+    </div>
+    <div class="card">
+      <img src="photo19.jpg" alt="参加者19">
+      <div class="name">★ハッチポッチステーション★　候補生　4人で合格させろと言ってきた</div>
+    </div>
+    <div class="card">
+      <img src="photo20.jpg" alt="参加者20">
+      <div class="name">★マグッロー★　候補生　オーディションを受けるフリをしてダイヤを盗もうとしている/div>
+    </div>
+      <div class="card">
+      <img src="photo21.jpg" alt="参加者21">
+      <div class="name">★ムーミン★　候補生　北欧から参戦</div>
+    </div>
+      <div class="card">
+      <img src="photo22.jpg" alt="参加者22">
+      <div class="name">★白い妖精★　候補生　見た目はほぼ一緒だが違う動物です</div>
+    </div>
+    <div class="card">
+      <img src="photo23.jpg" alt="参加者23">
+      <div class="name">★ビッツァー★　候補生　面倒見がいい</div>
+    </div>
+    <div class="card">
+      <img src="photo24.jpg" alt="参加者24">
+      <div class="name">★ショーン★　候補生　仲間のご飯のためにオーディションに参加</div>
+    </div>
+    <div class="card">
+      <img src="photo25.jpg" alt="参加者25">
+      <div class="name">★がんペいちゃん★　候補生　おねえちゃんがいないとちょっと心配</div>
+    </div>
+    <div class="card">
+      <img src="photo26.jpg" alt="参加者26">
+      <div class="name">★ロイヤル★　候補生　イギリスから参戦　格式高いコーギー</div>
+    </div>
+    <div class="card">
+      <img src="photo27.jpg" alt="参加者27">
+      <div class="name">★えびふらい★　候補生　近くの犬を誘惑し、だめにする力を持つ</div>
+    </div>
+    <div class="card">
+      <img src="photo28.jpg" alt="参加者28">
+      <div class="name">★エミール★　候補生　パリから参戦　お兄ちゃんのレミーと仲良し　チーズ食べたい</div>
+    </div>
 
-photos.forEach(p => {
-  const img = document.createElement("img");
-  img.src = "images/" + p.file;
-  img.onclick = () => openModal(img.src, p.text);
-  gallery.appendChild(img);
-});
-
-function openModal(src, text) {
-  document.getElementById("modal").style.display = "flex";
-  document.getElementById("modalImg").src = src;
-  document.getElementById("modalText").innerText = text;
-}
-
-function closeModal() {
-  document.getElementById("modal").style.display = "none";
-}
-</script>
+  </div>
 
 </body>
 </html>
