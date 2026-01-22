@@ -62,11 +62,7 @@ h1 {
 
 <h1>写真一覧</h1>
 
-<div class="gallery">
-  <img src="images/photo1.jpg" onclick="openModal(this, '説明文1')">
-  <img src="images/photo2.jpg" onclick="openModal(this, '説明文2')">
-  <img src="images/photo3.jpg" onclick="openModal(this, '説明文3')">
-</div>
+<div class="gallery" id="gallery"></div>
 
 <div class="modal" id="modal" onclick="closeModal()">
   <div class="modal-content" onclick="event.stopPropagation()">
@@ -77,9 +73,51 @@ h1 {
 </div>
 
 <script>
-function openModal(img, text) {
+// ====== ここだけ編集すればOK ======
+const photos = [
+  { file: "photo1.jpg",  text: "説明文1" },
+  { file: "photo2.jpg",  text: "説明文2" },
+  { file: "photo3.jpg",  text: "説明文3" },
+  { file: "photo4.jpg",  text: "説明文4" },
+  { file: "photo5.jpg",  text: "説明文5" },
+  { file: "photo6.jpg",  text: "説明文6" },
+  { file: "photo7.jpg",  text: "説明文7" },
+  { file: "photo8.jpg",  text: "説明文8" },
+  { file: "photo9.jpg",  text: "説明文9" },
+  { file: "photo10.jpg", text: "説明文10" },
+  { file: "photo11.jpg", text: "説明文11" },
+  { file: "photo12.jpg", text: "説明文12" },
+  { file: "photo13.jpg", text: "説明文13" },
+  { file: "photo14.jpg", text: "説明文14" },
+  { file: "photo15.jpg", text: "説明文15" },
+  { file: "photo16.jpg", text: "説明文16" },
+  { file: "photo17.jpg", text: "説明文17" },
+  { file: "photo18.jpg", text: "説明文18" },
+  { file: "photo19.jpg", text: "説明文19" },
+  { file: "photo20.jpg", text: "説明文20" },
+  { file: "photo21.jpg", text: "説明文21" },
+  { file: "photo22.jpg", text: "説明文22" },
+  { file: "photo23.jpg", text: "説明文23" },
+  { file: "photo24.jpg", text: "説明文24" },
+  { file: "photo25.jpg", text: "説明文25" },
+  { file: "photo26.jpg", text: "説明文26" },
+  { file: "photo27.jpg", text: "説明文27" },
+  { file: "photo28.jpg", text: "説明文28" }
+];
+// ==================================
+
+const gallery = document.getElementById("gallery");
+
+photos.forEach(p => {
+  const img = document.createElement("img");
+  img.src = "images/" + p.file;
+  img.onclick = () => openModal(img.src, p.text);
+  gallery.appendChild(img);
+});
+
+function openModal(src, text) {
   document.getElementById("modal").style.display = "flex";
-  document.getElementById("modalImg").src = img.src;
+  document.getElementById("modalImg").src = src;
   document.getElementById("modalText").innerText = text;
 }
 
