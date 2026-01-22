@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>写真ギャラリー</title>
+<title>Saitolesz Project</title>
 
 <style>
 body {
@@ -11,16 +11,29 @@ body {
   padding: 16px;
   font-family: sans-serif;
   background: #f2f2f2;
-}
-
-h1 {
   text-align: center;
 }
 
+h1 {
+  margin: 16px 0 12px;
+}
+
+.main-photo {
+  max-width: 900px;
+  margin: 0 auto 32px;
+}
+
+.main-photo img {
+  width: 100%;
+  border-radius: 14px;
+}
+
+/* 参加者一覧 */
 .gallery {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
   gap: 12px;
+  padding: 0 8px 24px;
 }
 
 .gallery img {
@@ -29,6 +42,7 @@ h1 {
   cursor: pointer;
 }
 
+/* モーダル */
 .modal {
   display: none;
   position: fixed;
@@ -39,7 +53,7 @@ h1 {
 }
 
 .modal-content {
-  background: white;
+  background: #fff;
   padding: 16px;
   max-width: 90%;
   border-radius: 10px;
@@ -60,10 +74,17 @@ h1 {
 
 <body>
 
-<h1>写真一覧</h1>
+<!-- メイン -->
+<h1>Saitolesz Project</h1>
+<div class="main-photo">
+  <img src="images/photo0.jpg" alt="Saitolesz Project メイン写真">
+</div>
 
+<!-- 一覧 -->
+<h1>参加者一覧</h1>
 <div class="gallery" id="gallery"></div>
 
+<!-- モーダル -->
 <div class="modal" id="modal" onclick="closeModal()">
   <div class="modal-content" onclick="event.stopPropagation()">
     <div class="close" onclick="closeModal()">閉じる</div>
@@ -73,38 +94,14 @@ h1 {
 </div>
 
 <script>
-// ====== ここだけ編集すればOK ======
-const photos = [
-  { file: "photo1.jpg",  text: "説明文1" },
-  { file: "photo2.jpg",  text: "説明文2" },
-  { file: "photo3.jpg",  text: "説明文3" },
-  { file: "photo4.jpg",  text: "説明文4" },
-  { file: "photo5.jpg",  text: "説明文5" },
-  { file: "photo6.jpg",  text: "説明文6" },
-  { file: "photo7.jpg",  text: "説明文7" },
-  { file: "photo8.jpg",  text: "説明文8" },
-  { file: "photo9.jpg",  text: "説明文9" },
-  { file: "photo10.jpg", text: "説明文10" },
-  { file: "photo11.jpg", text: "説明文11" },
-  { file: "photo12.jpg", text: "説明文12" },
-  { file: "photo13.jpg", text: "説明文13" },
-  { file: "photo14.jpg", text: "説明文14" },
-  { file: "photo15.jpg", text: "説明文15" },
-  { file: "photo16.jpg", text: "説明文16" },
-  { file: "photo17.jpg", text: "説明文17" },
-  { file: "photo18.jpg", text: "説明文18" },
-  { file: "photo19.jpg", text: "説明文19" },
-  { file: "photo20.jpg", text: "説明文20" },
-  { file: "photo21.jpg", text: "説明文21" },
-  { file: "photo22.jpg", text: "説明文22" },
-  { file: "photo23.jpg", text: "説明文23" },
-  { file: "photo24.jpg", text: "説明文24" },
-  { file: "photo25.jpg", text: "説明文25" },
-  { file: "photo26.jpg", text: "説明文26" },
-  { file: "photo27.jpg", text: "説明文27" },
-  { file: "photo28.jpg", text: "説明文28" }
-];
-// ==================================
+// ===== ここは触らなくてOK =====
+const photos = [];
+for (let i = 1; i <= 28; i++) {
+  photos.push({
+    file: `photo${i}.jpg`,
+    text: `参加者 ${i}`
+  });
+}
 
 const gallery = document.getElementById("gallery");
 
